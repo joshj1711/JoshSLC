@@ -101,19 +101,19 @@ while True:
     else:
         # Player 1 movement
         if keys[pygame.K_d]:
-            player1_rect.x += 10
+            player1_rect.x += 7
             player_side = "right"
             moving = True
         if keys[pygame.K_a]:
-            player1_rect.x -= 10
+            player1_rect.x -= 7
             player_side = "left"
             moving = True
         if keys[pygame.K_w]:
-            player1_rect.y -= 10
+            player1_rect.y -= 7
             player_side = "up"
             moving = True
         if keys[pygame.K_s]:
-            player1_rect.y += 10
+            player1_rect.y += 7
             player_side = "down"
             moving = True
 
@@ -156,19 +156,19 @@ while True:
 
         # Player 2 movement
         if keys[pygame.K_LEFT]:
-            player_2_rect.x -= 10
+            player_2_rect.x -= 7
             player_2side = "left"
             moving = True
         if keys[pygame.K_RIGHT]:
-            player_2_rect.x += 10
+            player_2_rect.x += 7
             player_2side = "right"
             moving = True
         if keys[pygame.K_DOWN]:
-            player_2_rect.y += 10
+            player_2_rect.y += 7
             player_2side = "down"
             moving = True
         if keys[pygame.K_UP]:
-            player_2_rect.y -= 10
+            player_2_rect.y -= 7
             player_2side = "up"
             moving = True
 
