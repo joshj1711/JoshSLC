@@ -2,7 +2,7 @@ import threading
 import pygame
 import sys
 from sys import exit
-
+from playsound import playsound
 # Initialize Pygame
 pygame.init()
 
@@ -20,7 +20,8 @@ bullet = pygame.Surface((10, 10))
 bullet.fill("black")
 bullet_rect = bullet.get_rect(topright=(player1_rect.x, player1_rect.y))
 bullet_present = False
-
+start_screen = pygame.image.load("pics/pixilart-drawing (32).png")
+game_start = False
 # Walls setup
 wall1 = pygame.Surface((50, 700))
 wall1.fill("red")
@@ -54,7 +55,7 @@ FONT = pygame.font.Font(None, 48)
 health2_text = str(health2)
 health2_surf = FONT.render(health2_text, True, "white")
 health2_surf_rect = health2_surf.get_rect(topright=(700, 20))
-
+pygame.display.set_caption("Pixel Warfare")
 health_text = str(health)
 health1_surf = FONT.render(health_text, True, "white")
 health1_surf_rect = health1_surf.get_rect(topright=(100, 20))
@@ -120,6 +121,7 @@ while True:
         # Bullet 1 shooting
         if keys[pygame.K_SPACE] and not bullet_present:
             bullet_present = True
+
             bullet.fill("yellow")
             bullet_rect.x = player1_rect.x + player1_rect.width // 2 - bullet_rect.width // 2
             bullet_rect.y = player1_rect.y + player1_rect.height // 2 - bullet_rect.height // 2
@@ -236,18 +238,20 @@ while True:
         health1_surf = FONT.render(health_text, True, "white")
         health1_surf_rect = health1_surf.get_rect(topright=(100, 20))
 
-
-
-        screen.blit(bullet, bullet_rect)
-        screen.blit(bullet2, bullet_rect2)
-        screen.blit(player_2, player_2_rect)
-        screen.blit(player1, player1_rect)
-        screen.blit(wall2, wall2_rect)
-        screen.blit(wall1, wall1_rect)
-        screen.blit(wall3, wall3_rect)
-        screen.blit(wall4, wall4_rect)
-        screen.blit(health2_surf, health2_surf_rect)
-        screen.blit(health1_surf, health1_surf_rect)
-
+        if keys[pygame.K_l] and game_start == False:
+            game_start = True
+        if game_start == True:
+         screen.blit(bullet, bullet_rect)
+         screen.blit(bullet2, bullet_rect2)
+         screen.blit(player_2, player_2_rect)
+         screen.blit(player1, player1_rect)
+         screen.blit(wall2, wall2_rect)
+         screen.blit(wall1, wall1_rect)
+         screen.blit(wall3, wall3_rect)
+         screen.blit(wall4, wall4_rect)
+         screen.blit(health2_surf, health2_surf_rect)
+         screen.blit(health1_surf, health1_surf_rect)
+        if game_start == False:
+            screen.blit(start_screen,(0,0))
     pygame.display.update()
     CLOCK.tick(60)
